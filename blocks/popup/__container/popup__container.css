@@ -1,0 +1,13 @@
+.popup__container { 
+    background-color: white;
+    position: relative;
+    border-radius: 3%;
+    min-width: 430px;
+    min-height: 330px;
+}
+
+@media screen and (max-width: 320px) { 
+    .popup__container {
+     min-width: calc(100% - 32px);
+    }
+}
