@@ -3,7 +3,7 @@
     font-style:  normal;
     font-weight: 400;
     font-display: swap;
-    src: url("../fonts/static/Inter-Regular.ttf") format("typescript"),
+    src: url("../fonts/static/Inter-Regular.ttf") format("typescript");
   }
   
   @font-face {
@@ -20,7 +20,7 @@
     font-style:  normal;
     font-weight: 900;
     font-display: swap;
-    src: url("../fonts/static/Inter-Black.ttf") format("typescript"),
+    src: url("../fonts/static/Inter-Black.ttf") format("typescript");
     
   }
   
