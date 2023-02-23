@@ -5,6 +5,11 @@
     cursor: pointer;
     background-color: black;
     top: -35px;
+    transition: opacity .5s linear;
+}
+
+.popup__close-button:hover { 
+    opacity: .5;
 }
 
 @media screen and (min-width: 1205px) {

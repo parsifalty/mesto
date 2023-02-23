@@ -9,6 +9,11 @@
      font-weight: 400;
      text-align: center;
      color: #ffffff;
+     transition: opacity .3s linear;
+}
+
+.popup__submit:hover { 
+    opacity: .5;
 }
 
 @media screen and (min-width: 1205px) {
