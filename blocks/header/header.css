@@ -1,6 +1,8 @@
 .header { 
     display: flex;
     flex-wrap: wrap;
+    flex-direction: column;
+    
 }
 
 @media screen and (min-width: 901px) {
