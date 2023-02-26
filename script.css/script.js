@@ -17,12 +17,6 @@ function popupEdit() {
  jobInput.value = occupation.textContent;
 }
 
-hearts.forEach((element) => 
-element.addEventListener('click', (evt) => {
-    evt.target.classList.add('grid-net__item-button_active');
-  }
-));
-
 closeProfileButton.addEventListener('click', popupClosed);
 function popupClosed() {
  popup.classList.remove('popup_opened');
