@@ -6,10 +6,11 @@
     padding: 0;
     min-height: 50px;
     transition: opacity .5s linear;
+    border-radius: 2px;
 }
 
 .profile__button:hover { 
-    opacity: .5;
+    opacity: .6;
 }
 
 @media screen and (min-width: 901px) {

@@ -4,17 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./blocks/pages/index.css" />
+    <link rel="stylesheet" href="../pages/index.css" />
     <title>Mesto</title>
   </head>
   <body class="page">
     <header class="header">
       <img src="./images/Vector.svg" class="header__logo" alt="логотип" />
-      <img
-        src="./images/Line.png"
-        class="header__line"
-        alt="линия-под-логотипом"
-      />
     </header>
     <main class="content">
       <section class="profile" aria-label="Профиль">
@@ -25,12 +20,12 @@
         />
         <div class="profile__info">
           <div class="profile__info-box">
-            <h1 class="profile__info-fullname">Жак Ив Кусто</h1>
-            <input class="profile__info-button" type="button" />
+            <h1 class="profile__info-fullname">Жак-Ив Кусто</h1>
+            <button class="profile__info-button" type="button"></button>
           </div>
           <p class="profile__info-occupation">Исследователь фронтэнда</p>
         </div>
-        <input class="profile__button" type="button" />
+        <button class="profile__button" type="button"></button>
       </section>
       <section class="grid-net" aria-label="грид-сетка">
         <article class="grid-net__item">
@@ -41,7 +36,7 @@
           />
           <div class="grid-net__item-box">
             <h2 class="grid-net__item-title">krach</h2>
-            <input class="grid-net__item-button" type="button" />
+            <button class="grid-net__item-button" type="button"></button>
           </div>
         </article>
         <article class="grid-net__item">
@@ -52,7 +47,7 @@
           />
           <div class="grid-net__item-box">
             <h2 class="grid-net__item-title">krachevst</h2>
-            <input class="grid-net__item-button" type="button" />
+            <button class="grid-net__item-button" type="button"></button>
           </div>
         </article>
         <article class="grid-net__item">
@@ -63,7 +58,7 @@
           />
           <div class="grid-net__item-box">
             <h2 class="grid-net__item-title">krachevstkkkkkkkkkkkkkkkkk</h2>
-            <input class="grid-net__item-button" type="button" />
+            <button class="grid-net__item-button" type="button"></button>
           </div>
         </article>
         <article class="grid-net__item">
@@ -74,7 +69,7 @@
           />
           <div class="grid-net__item-box">
             <h2 class="grid-net__item-title">krachevstsndksfks</h2>
-            <input class="grid-net__item-button" type="button" />
+            <button class="grid-net__item-button" type="button"></button>
           </div>
         </article>
         <article class="grid-net__item">
@@ -85,7 +80,7 @@
           />
           <div class="grid-net__item-box">
             <h2 class="grid-net__item-title">krachev</h2>
-            <input class="grid-net__item-button" type="button" />
+            <button class="grid-net__item-button" type="button"></button>
           </div>
         </article>
         <article class="grid-net__item">
@@ -96,15 +91,19 @@
           />
           <div class="grid-net__item-box">
             <h2 class="grid-net__item-title">krachevst</h2>
-            <input class="grid-net__item-button" type="button" />
+            <button class="grid-net__item-button" type="button"></button>
           </div>
         </article>
       </section>
-      <section class="popup" aria-label="попап">
+    </main>
+    <footer class="footer">
+    <p class="footer__copyright">© 2020 Mesto Russia</p>
+  </footer>
+   <div class="popup" aria-label="попап">
         <div class="popup__container">
           <h2 class="popup__title">Редактировать профиль</h2>
           <button class="popup__close-button"></button>
-          <form class="popup__form">
+          <form class="popup__form" form="popup-form">
             <input
               class="popup__input popup__username"
               id="username"
@@ -122,11 +121,7 @@
             <button class="popup__submit" type="submit">Сохранить</button>
           </form>
         </div>
-      </section>
-    </main>
+      </div>
     <script src="./script.css/script.js"></script>
   </body>
-  <footer class="footer">
-    <p class="footer__copyright">© 2020 Mesto Russia</p>
-  </footer>
 </html>

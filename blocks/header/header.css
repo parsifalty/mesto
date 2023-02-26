@@ -1,15 +1,12 @@
 .header { 
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    
+    border-bottom: 1px #545454 solid;
+    padding-bottom: 29px;
 }
 
 @media screen and (min-width: 901px) {
     .header {
         max-width: calc(100% - 400px);
         margin: 45px auto 0;
-        gap: 41px;
     }
 }
 
@@ -17,6 +14,5 @@
     .header {
         max-width: calc(100%);
         margin: 28px auto 0;
-        gap: 31.6px;
     }
 }
