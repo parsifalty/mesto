@@ -6,8 +6,8 @@ let hearts = document.querySelectorAll('.grid-net__item-button');
 let userName = document.querySelector('.profile__info-fullname');
 let occupation = document.querySelector('.profile__info-occupation');
 let formElement = document.querySelector('.popup__form');
-let nameInput = document.querySelector('.popup__username');
-let jobInput = document.querySelector('.popup__occupation');
+let nameInput = document.querySelector('.popup__input_type_username');
+let jobInput = document.querySelector('.popup__input_type_occupation');
 let closeProfileButton = document.querySelector('.popup__close-button');
 editProfileButton.addEventListener('click', popupEdit);
 
