@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./pages/index.css" />
+    <link rel="stylesheet" href="./style.css" />
     <title>Mesto</title>
   </head>
   <body class="page">
@@ -30,67 +31,66 @@
       <section class="grid-net" aria-label="грид-сетка">
         <article class="grid-net__item">
           <img
-            src="./images/kirill-pershin-1088404-unsplash.png"
+            
             class="grid-net__item-image"
             alt="просторы"
           />
           <div class="grid-net__item-box">
-            <h2 class="grid-net__item-title">krach</h2>
+            <h2 class="grid-net__item-title"></h2>
             <button class="grid-net__item-button" type="button"></button>
           </div>
         </article>
         <article class="grid-net__item">
           <img
-            src="./images/kirill-pershin-1404681-unsplash.png"
+            
             class="grid-net__item-image"
             alt="просторы"
           />
           <div class="grid-net__item-box">
-            <h2 class="grid-net__item-title">krachevst</h2>
+            <h2 class="grid-net__item-title"></h2>
             <button class="grid-net__item-button" type="button"></button>
           </div>
         </article>
         <article class="grid-net__item">
           <img
-            src="./images/kirill-pershin-1556355-unsplash.png"
             class="grid-net__item-image"
             alt="просторы"
           />
           <div class="grid-net__item-box">
-            <h2 class="grid-net__item-title">krachevstkkkkkkkkkkkkkkkkk</h2>
+            <h2 class="grid-net__item-title"></h2>
             <button class="grid-net__item-button" type="button"></button>
           </div>
         </article>
         <article class="grid-net__item">
           <img
-            src="./images/kirill-pershin-1088404-unsplash.png"
+            
             class="grid-net__item-image"
             alt="просторы"
           />
           <div class="grid-net__item-box">
-            <h2 class="grid-net__item-title">krachevstsndksfks</h2>
+            <h2 class="grid-net__item-title"></h2>
             <button class="grid-net__item-button" type="button"></button>
           </div>
         </article>
         <article class="grid-net__item">
           <img
-            src="./images/kirill-pershin-1404681-unsplash.png"
+            
             class="grid-net__item-image"
             alt="просторы"
           />
           <div class="grid-net__item-box">
-            <h2 class="grid-net__item-title">krachev</h2>
+            <h2 class="grid-net__item-title"></h2>
             <button class="grid-net__item-button" type="button"></button>
           </div>
         </article>
         <article class="grid-net__item">
           <img
-            src="./images/kirill-pershin-1556355-unsplash.png"
+            
             class="grid-net__item-image"
             alt="просторы"
           />
           <div class="grid-net__item-box">
-            <h2 class="grid-net__item-title">krachevst</h2>
+            <h2 class="grid-net__item-title"></h2>
             <button class="grid-net__item-button" type="button"></button>
           </div>
         </article>
@@ -99,6 +99,12 @@
     <footer class="footer">
     <p class="footer__copyright">© 2020 Mesto Russia</p>
   </footer>
+  <div class="grid-net__item-image-overlay">
+    <div class="grid-net__item-image_active">
+    <img class="gvf" alt="просторы">
+    <button class="grid-net__item-image-close-button"></button>
+  </div>
+  </div>
    <div class="popup" aria-label="попап">
         <div class="popup__container">
           <h2 class="popup__title">Редактировать профиль</h2>
@@ -122,6 +128,39 @@
           </form>
         </div>
       </div>
+      <!-- cardCreateHolder-->
+      <div class="card-create" aria-label="создание-карточки">
+        <div class="card-create__container">
+          <h2 class="card-create__title">Новое место</h2>
+          <button class="card-create__close-button" type="button"></button>
+          <form class="card-create__form" name="card-create-form">
+            <input
+              class="card-create__input card-create__input_type_name"
+              id="name"
+              name="name"
+              type="text"
+              placeholder="Название"
+            />
+            <input
+              class="card-create__input card-create__input_type_link"
+              id="link"
+              name="link"
+              type="text"
+              placeholder="Ссылка на картинку"
+            />
+            <button class="card-create__submit" type="submit">Сохранить</button>
+          </form>
+        </div>
+      </div>
+      <template id='template-card'>
+        <article class="grid-net__item">
+          <img class="grid-net__item-image" alt="просторы">
+          <div class="grid-net__item-box">
+            <h2 class="grid-net__item-title"></h2>
+            <button class="grid-net__item-button"></button>
+          </div>
+        </article>
+      </template>
     <script src="./scripts/index.js"></script>
   </body>
 </html>
