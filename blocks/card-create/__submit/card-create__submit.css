@@ -1,0 +1,19 @@
+.card-create__submit {
+    margin: 0 auto;
+    padding: 0;
+    background-color: black;
+    border: 0;
+    cursor: pointer;
+    font-family: "Inter", "Arial", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    text-align: center;
+    color: #ffffff;
+    transition: opacity 0.3s linear;
+    border-radius: 2px;
+    min-width: 358px;
+    min-height: 50px;
+    font-size: 18px;
+    line-height: 22px;
+    margin-top: 14px;
+  }

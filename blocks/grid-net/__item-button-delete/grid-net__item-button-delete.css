@@ -1,0 +1,14 @@
+.grid-net__item-button-delete {
+    background-image: url(./Group.svg);
+    position: absolute;
+    border: 0;
+    right: 18px;
+    top: 20px;
+    height: 19px;
+    width: 18px;
+    background-repeat: no-repeat;
+    padding: 0;
+    background-color: transparent;
+    cursor: pointer;
+  }
+  
