@@ -41,6 +41,7 @@ const hh = document.querySelector('.grid-net__item-image-holder');
 const imageHolderCloseButton = document.querySelector('.grid-net__item-image-close-button');
 const popupForm = document.querySelector('.popup__form');
 const createCardy = document.querySelector('.card-create__form');
+const gridNetSpan = document.querySelector('.grid-net__item-image-overlay-span');
 editProfileButton.addEventListener('click', popupEdit);
 
 function popupEdit() {
@@ -84,10 +85,18 @@ element.addEventListener('click', (evt) => {
 
 gridImage.forEach((element) => 
 element.addEventListener('click',function (){ 
-  imageHolder.classList.toggle('grid-net__item-image-overlay_active');
-  hh.setAttribute('src', element.src);
-  hh.classList.toggle('.grid-net__item-image_active');
-  console.log(hh); }));
+imageHolder.classList.toggle('grid-net__item-image-overlay_active');
+hh.setAttribute('src', element.src);
+hh.classList.toggle('grid-net__item-image_active'); 
+}));
+
+/* gridImage.forEach((element) => 
+element.addEventListener('click', function(){
+  gridTitle.forEach((element) => 
+    gridNetSpan.textContent = element.textContent
+)})); */
+
+
 
 imageHolderCloseButton.addEventListener('click', function(){
     imageHolder.classList.remove('grid-net__item-image-overlay_active');
@@ -99,10 +108,15 @@ const cardCreateCloseButton = document.querySelector('.card-create__close-button
 const cardCreateInputName = document.querySelector('.card-create__input_type_name');
 const cardCreateInputLink = document.querySelector('.card-create__input_type_link');
 const profileButton = document.querySelector('.profile__button');
-const itemArticle = document.querySelector('.grid-net__item');
+const itemArticle = document.querySelectorAll('.grid-net__item');
 const gridItemBox = document.querySelector('.grid-net__item-box');
 const gridNet = document.querySelector('.grid-net')
 const cardCreateSubmit = document.querySelector('.card-create__submit');
+
+itemArticle.forEach((element) => 
+element.addEventListener('click', function(){
+  gridNetSpan.textContent = element.textContent
+}))
 
 profileButton.addEventListener('click', cardCreateOpened);
 cardCreateCloseButton.addEventListener('click', cardCreateClosed);
@@ -135,14 +149,21 @@ function createCard(link, name){
 const TemplateCard = document.querySelector('#template-card').content;
 const card = TemplateCard.querySelector('.grid-net__item').cloneNode(true);
 card.querySelector('.grid-net__item-image').src = link;
+card.querySelector('.grid-net__item-image').addEventListener('click', function(){
+imageHolder.classList.toggle('grid-net__item-image-overlay_active');
+hh.setAttribute('src', link);
+hh.classList.toggle('grid-net__item-image_active');
+})
 card.querySelector('.grid-net__item-title').textContent = name;
 card.querySelector('.grid-net__item-button').addEventListener('click', function(){
 card.querySelector('.grid-net__item-button').classList.toggle('grid-net__item-button_active');
 });
 card.querySelector('.grid-net__item-box');
+gridNetSpan.textContent = name;
 const deleteButton = card.querySelector('.grid-net__item-button-delete');
 deleteButton.addEventListener('click', function(){
   const listItem = deleteButton.closest('.grid-net__item');
+
   listItem.remove();
 })
 return card

@@ -160,3 +160,12 @@
   background-color: transparent;
   cursor: pointer;
 }
+
+.grid-net__item-image-overlay-span { 
+  position: absolute;
+  bottom: -50px;
+  left: 0;
+  font-size: 20px;
+  color: white;
+
+}
