@@ -1,3 +1,4 @@
 .grid-net__item-image-overlay_active {
-    display: flex;
+    visibility: visible;
+    opacity: 1;
   }

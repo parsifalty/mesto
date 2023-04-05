@@ -10,7 +10,19 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
-    min-width: 355px;
     margin-bottom: 33px;
   }
+
+  @media screen and (min-width: 1000px) {
+    .card-create__input {
+     min-width: 355px;
+     margin-bottom: 33px;
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 999px) {
+    .card-create__input {
+     min-width: 238px;
+    }
+}
   

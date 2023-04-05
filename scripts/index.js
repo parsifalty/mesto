@@ -42,17 +42,27 @@ const imageHolderCloseButton = document.querySelector('.grid-net__item-image-clo
 const popupForm = document.querySelector('.popup__form');
 const createCardy = document.querySelector('.card-create__form');
 const gridNetSpan = document.querySelector('.grid-net__item-image-overlay-span');
+const cardCreate = document.querySelector('.card-create');
+const cardCreateForm = document.querySelector('.card-create__form');
+const cardCreateCloseButton = document.querySelector('.card-create__close-button');
+const cardCreateInputName = document.querySelector('.card-create__input_type_name');
+const cardCreateInputLink = document.querySelector('.card-create__input_type_link');
+const profileButton = document.querySelector('.profile__button');
+const itemArticle = document.querySelectorAll('.grid-net__item');
+const gridItemBox = document.querySelector('.grid-net__item-box');
+const gridNet = document.querySelector('.grid-net')
+const cardCreateSubmit = document.querySelector('.card-create__submit');
 editProfileButton.addEventListener('click', popupEdit);
 
 function popupEdit() {
- popup.classList.add('popup_opened');
+ popup.classList.add('popup_active');
  nameInput.value = userName.textContent;
  jobInput.value = occupation.textContent;
 }
 
 closeProfileButton.addEventListener('click', popupClosed);
 function popupClosed() {
- popup.classList.remove('popup_opened');
+popup.classList.remove('popup_active');
 }
 
 function handleFormSubmit(evt) {
@@ -78,11 +88,6 @@ for(let i = 0; i < gridTitle.length; i++){
     gridTitle[i].textContent = initialCards[i].name;
 }
 
-/* gridImage.forEach((element) =>
-element.addEventListener('click', (evt) => { 
-    evt.target.classList.add('')
-})); */
-
 gridImage.forEach((element) => 
 element.addEventListener('click',function (){ 
 imageHolder.classList.toggle('grid-net__item-image-overlay_active');
@@ -90,28 +95,9 @@ hh.setAttribute('src', element.src);
 hh.classList.toggle('grid-net__item-image_active'); 
 }));
 
-/* gridImage.forEach((element) => 
-element.addEventListener('click', function(){
-  gridTitle.forEach((element) => 
-    gridNetSpan.textContent = element.textContent
-)})); */
-
-
-
 imageHolderCloseButton.addEventListener('click', function(){
     imageHolder.classList.remove('grid-net__item-image-overlay_active');
 })
-
-const cardCreate = document.querySelector('.card-create');
-const cardCreateForm = document.querySelector('.card-create__form');
-const cardCreateCloseButton = document.querySelector('.card-create__close-button');
-const cardCreateInputName = document.querySelector('.card-create__input_type_name');
-const cardCreateInputLink = document.querySelector('.card-create__input_type_link');
-const profileButton = document.querySelector('.profile__button');
-const itemArticle = document.querySelectorAll('.grid-net__item');
-const gridItemBox = document.querySelector('.grid-net__item-box');
-const gridNet = document.querySelector('.grid-net')
-const cardCreateSubmit = document.querySelector('.card-create__submit');
 
 itemArticle.forEach((element) => 
 element.addEventListener('click', function(){
@@ -122,41 +108,25 @@ profileButton.addEventListener('click', cardCreateOpened);
 cardCreateCloseButton.addEventListener('click', cardCreateClosed);
 
 function cardCreateOpened() { 
-    cardCreate.classList.add('card-create_opened');
+    cardCreate.classList.add('card-create_active');
 }
 
 function cardCreateClosed() {
-    cardCreate.classList.remove('card-create_opened');
+    cardCreate.classList.remove('card-create_active');
 }
-/* function gggg(titleValue, imageValue){
-const CardElement = document.querySelector('#card').content;
-const ElementContent = CardElement.querySelector('.grid-net__item').cloneNode('true');
- ElementContent.querySelector('.grid-net__image').src = imageValue;
- ElementContent.querySelector('.grid-net__title').textContent = titleValue;
- ElementContent.querySelector('.grid-net__button');
-gridNet.prepend(CardElement);
-}
-
-cardCreateSubmit.addEventListener('click', function(){ 
-    gggg(cardCreateInputName.value, cardCreateInputLink.value);
-    cardCreateInputName.value = '';
-    cardCreateInputLink.value = '';
-    
-})
-*/
 
 function createCard(link, name){
 const TemplateCard = document.querySelector('#template-card').content;
 const card = TemplateCard.querySelector('.grid-net__item').cloneNode(true);
 card.querySelector('.grid-net__item-image').src = link;
 card.querySelector('.grid-net__item-image').addEventListener('click', function(){
-imageHolder.classList.toggle('grid-net__item-image-overlay_active');
+imageHolder.classList.add('grid-net__item-image-overlay_active');
 hh.setAttribute('src', link);
 hh.classList.toggle('grid-net__item-image_active');
 })
 card.querySelector('.grid-net__item-title').textContent = name;
 card.querySelector('.grid-net__item-button').addEventListener('click', function(){
-card.querySelector('.grid-net__item-button').classList.toggle('grid-net__item-button_active');
+card.querySelector('.grid-net__item-button').classList.remove('grid-net__item-button_active');
 });
 card.querySelector('.grid-net__item-box');
 gridNetSpan.textContent = name;

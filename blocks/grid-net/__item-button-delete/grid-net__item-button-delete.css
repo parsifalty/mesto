@@ -1,8 +1,8 @@
 .grid-net__item-button-delete {
-    background-image: url(./Group.svg);
+    background-image: url(../../../Group.svg);
     position: absolute;
     border: 0;
-    right: 18px;
+    right: 20px;
     top: 20px;
     height: 19px;
     width: 18px;
@@ -10,5 +10,10 @@
     padding: 0;
     background-color: transparent;
     cursor: pointer;
+    transition: opacity .3s ease-in-out;
+  }
+
+  .grid-net__item-button-delete:hover { 
+    opacity: 0.6;
   }
   

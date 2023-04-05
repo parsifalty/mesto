@@ -11,9 +11,31 @@
     color: #ffffff;
     transition: opacity 0.3s linear;
     border-radius: 2px;
-    min-width: 358px;
-    min-height: 50px;
     font-size: 18px;
-    line-height: 22px;
     margin-top: 14px;
   }
+
+  .card-create__submit:hover { 
+    opacity: .8;
+}
+
+  @media screen and (min-width: 1000px) {
+    .card-create__submit {
+     min-width: 358px;
+     min-height: 50px;
+     font-size: 18px;
+     line-height: 22px;
+     margin-top: 14px;
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 999px) {
+    .card-create__submit {
+     min-width: 238px;
+     min-height: 46px;
+     margin-top: 15px;
+     margin-bottom: 10px;
+     font-size: 14px;
+     line-height: 17px;
+    }
+}   
