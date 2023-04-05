@@ -4,7 +4,6 @@
     position: absolute;
     cursor: pointer;
     top: -35px;
-    right: 0;
     transition: opacity 0.5s linear;
     background-color: transparent;
     right: -37px;

@@ -9,7 +9,7 @@
     transition: opacity 0.5s linear;
 }
 
-/*.grid-net__item-button:hover {
+.grid-net__item-button:hover {
     opacity: 0.5;
    }
   
