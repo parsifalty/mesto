@@ -36,12 +36,13 @@ const closeProfileButton = document.querySelector('.popup__close-button');
 const hearts = document.querySelectorAll('.grid-net__item-button');
 const gridImage = document.querySelectorAll('.grid-net__item-image');
 const gridTitle = document.querySelectorAll('.grid-net__item-title');
-const imageHolder = document.querySelector('.grid-net__item-image-overlay');
-const hh = document.querySelector('.grid-net__item-image-holder');
-const imageHolderCloseButton = document.querySelector('.grid-net__item-image-close-button');
+const imageHolder = document.querySelector('.image-overlay');
+const imageHolderBox = document.querySelector('.image-overlay__holder');
+const hh = document.querySelector('.image-overlay__picture');
+const imageHolderCloseButton = document.querySelector('.image-overlay__button');
 const popupForm = document.querySelector('.popup__form');
 const createCardy = document.querySelector('.card-create__form');
-const gridNetSpan = document.querySelector('.grid-net__item-image-overlay-span');
+const gridNetSpan = document.querySelector('.image-overlay__span');
 const cardCreate = document.querySelector('.card-create');
 const cardCreateForm = document.querySelector('.card-create__form');
 const cardCreateCloseButton = document.querySelector('.card-create__close-button');
@@ -90,13 +91,13 @@ for(let i = 0; i < gridTitle.length; i++){
 
 gridImage.forEach((element) => 
 element.addEventListener('click',function (){ 
-imageHolder.classList.toggle('grid-net__item-image-overlay_active');
+imageHolder.classList.toggle('image-overlay_active');
 hh.setAttribute('src', element.src);
-hh.classList.toggle('grid-net__item-image_active'); 
+imageHolderBox.classList.add('grid-net__item-image_active'); 
 }));
 
 imageHolderCloseButton.addEventListener('click', function(){
-    imageHolder.classList.remove('grid-net__item-image-overlay_active');
+    imageHolder.classList.toggle('image-overlay_active');
 })
 
 itemArticle.forEach((element) => 
@@ -120,13 +121,13 @@ const TemplateCard = document.querySelector('#template-card').content;
 const card = TemplateCard.querySelector('.grid-net__item').cloneNode(true);
 card.querySelector('.grid-net__item-image').src = link;
 card.querySelector('.grid-net__item-image').addEventListener('click', function(){
-imageHolder.classList.add('grid-net__item-image-overlay_active');
+imageHolder.classList.add('image-overlay_active');
 hh.setAttribute('src', link);
-hh.classList.toggle('grid-net__item-image_active');
+imageHolderBox.classList.add('grid-net__item-image_active');
 })
 card.querySelector('.grid-net__item-title').textContent = name;
 card.querySelector('.grid-net__item-button').addEventListener('click', function(){
-card.querySelector('.grid-net__item-button').classList.remove('grid-net__item-button_active');
+card.querySelector('.grid-net__item-button').classList.toggle('grid-net__item-button_active');
 });
 card.querySelector('.grid-net__item-box');
 gridNetSpan.textContent = name;

@@ -13,7 +13,3 @@
     transition: all .3s ease-in-out;
 }
 
-.popup_active { 
-   visibility: visible;
-   opacity: 1;
-}

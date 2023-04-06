@@ -18,13 +18,8 @@
 @import url(../blocks/grid-net/__item-image/grid-net__item-image.css);
 @import url(../blocks/grid-net/__item-title/grid-net__item-title.css);
 @import url(../blocks/grid-net/__item/grid-net__item.css);
-@import url(../blocks/grid-net/__item-image-close-button/grid-net__item-image-close-button.css);
-@import url(../blocks/grid-net/__item-image-holder/grid-net__item-image-holder.css);
 @import url(../blocks/grid-net/__item-image/_active/grid-net__item-image_active.css);
-@import url(../blocks/grid-net/__item-image-overlay/grid-net__item-image-overlay.css);
-@import url(../blocks/grid-net/__item-image-overlay/_active/grid-net__item-image-overlay_active.css);
 @import url(../blocks/grid-net/__item-button-delete/grid-net__item-button-delete.css);
-@import url(../blocks/grid-net/__item-image-overlay-span/grid-net__item-image-overlay-span.css);
 @import url(../blocks/grid-net/grid-net.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 @import url(../blocks/footer/footer.css);
@@ -44,3 +39,9 @@
 @import url(../blocks/card-create/__form/card-create__form.css);
 @import url(../blocks/card-create/_active/card-create_active.css);
 @import url(../blocks/popup/_active/popop_active.css);
+@import url(../blocks/image-overlay/__button/image-overlay__button.css);
+@import url(../blocks/);
+@import url(../blocks/image-overlay/__picture/image-overlay__picture.css);
+@import url(../blocks/image-overlay/__span/image-overlay__span.css);
+@import url(../blocks/image-overlay/image-overlay.css);
+@import url(../blocks/image-overlay/_active/image-overlay_active.css);
