@@ -19,17 +19,17 @@ profileCloseButton.addEventListener('click', function(){
 popupClosed(popup);
 });
 
-function handlePopupSubmit(evt) {
+function handlePopupProfileSubmit(evt) {
  evt.preventDefault();
  userName.textContent = nameInput.value;
  occupation.textContent = jobInput.value;
  popupClosed(popup);
 }
-popupForm.addEventListener('submit', handlePopupSubmit);
+popupForm.addEventListener('submit', handlePopupProfileSubmit);
 
 function createCard(link, name){
-  const TemplateCard = document.querySelector('#template-card').content;
-  const card = TemplateCard.querySelector('.grid-net__item').cloneNode(true);
+  const templateCard = document.querySelector('#template-card').content;
+  const card = templateCard.querySelector('.grid-net__item').cloneNode(true);
   const cardImage = card.querySelector('.grid-net__item-image');
   cardImage.src = link;
   cardImage.alt = 'просторы'
@@ -66,8 +66,8 @@ profileButton.addEventListener('click', function(){ popupOpened(cardCreate);});
 cardCreateCloseButton.addEventListener('click', function(){ popupClosed(cardCreate)});
 
 function addCard(){ 
-  const NewCard = createCard(cardCreateInputLink.value, cardCreateInputName.value);
-  gridNet.prepend(NewCard);
+  const newCard = createCard(cardCreateInputLink.value, cardCreateInputName.value);
+  gridNet.prepend(newCard);
 }
 
 function handleCardformSubmit(evt) {
