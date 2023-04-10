@@ -30,7 +30,7 @@ function handlePopupProfileSubmit(evt) {
  occupation.textContent = jobInput.value;
  popupClosed(popup);
 }
-popupForm.addEventListener('submit', handlePopupProfileSubmit);
+popupProfileForm.addEventListener('submit', handlePopupProfileSubmit);
 
 function createCard(link, name){
   const templateCard = document.querySelector('#template-card').content;
