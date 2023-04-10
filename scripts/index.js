@@ -1,26 +1,27 @@
 
  profileEditButton.addEventListener('click', function(){
-popupOpened(popup);
+openPopup(popup);
 }); 
 
-function popupOpened(element){
+function openPopup(element){
 element.classList.add('popup_active');
 }
 
 
-function popupClosed(element){ 
+function closePopup(element){ 
   element.classList.remove('popup_active');
 }
 
 nameInput.value = userName.textContent;
 jobInput.value = occupation.textContent; 
 
-profileButton.addEventListener('click', function(){ popupOpened(cardCreate);});
+profileButton.addEventListener('click', function(){ openPopup(cardCreate);});
 
 popupCloseButton.forEach((button) => {
- button.addEventListener('click' , function (){ popupClosed(popup)
- popupClosed(cardCreate);
- popupClosed(popupImageHolder);
+ button.addEventListener('click' , function (){ 
+ closePopup(popup)
+ closePopup(cardCreate);
+ closePopup(popupImageHolder);
  })
 });
 
@@ -28,7 +29,7 @@ function handlePopupProfileSubmit(evt) {
  evt.preventDefault();
  userName.textContent = nameInput.value;
  occupation.textContent = jobInput.value;
- popupClosed(popup);
+ closePopup(popup);
 }
 popupProfileForm.addEventListener('submit', handlePopupProfileSubmit);
 
@@ -39,7 +40,7 @@ function createCard(link, name){
   cardImage.src = link;
   cardImage.alt = 'просторы'
   cardImage.addEventListener('click', function(){
-  popupOpened(popupImageHolder);
+  openPopup(popupImageHolder);
   popupImage.setAttribute('src', link);
   popupSpan.textContent = name;
   });
@@ -62,7 +63,7 @@ const cardElement = createCard(element.link, element.name);
 gridNet.prepend(cardElement)}
 );
 
-profileButton.addEventListener('click', function(){ popupOpened(cardCreate);});
+profileButton.addEventListener('click', function(){ openPopup(cardCreate);});
 
 function addCard(){ 
   const newCard = createCard(cardCreateInputLink.value, cardCreateInputName.value);
@@ -71,9 +72,9 @@ function addCard(){
 
 function handleCardformSubmit(evt) {
   evt.preventDefault();
-  popupClosed(cardCreate);
   addCard();
   cardCreateInputName.value = '';
   cardCreateInputLink.value = '';
+  closePopup(cardCreate);
  }
 cardCreateForm.addEventListener('submit', handleCardformSubmit);
