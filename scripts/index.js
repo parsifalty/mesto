@@ -62,12 +62,7 @@ const cardElement = createCard(element.link, element.name);
 gridNet.prepend(cardElement)}
 );
 
-/* imageHolderCloseButton.addEventListener('click', function(){
-    popupImageHolder.classList.toggle('image-overlay_active');
-}); */
-
 profileButton.addEventListener('click', function(){ popupOpened(cardCreate);});
-/* popupCloseButton.addEventListener('click', function(){ popupClosed(cardCreate)}); */
 
 function addCard(){ 
   const newCard = createCard(cardCreateInputLink.value, cardCreateInputName.value);
