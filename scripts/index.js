@@ -1,7 +1,7 @@
 
-profileEditButton.addEventListener('click', function(){
+ profileEditButton.addEventListener('click', function(){
 popupOpened(popup);
-});
+}); 
 
 function popupOpened(element){
 element.classList.add('popup_active');
@@ -15,8 +15,13 @@ function popupClosed(element){
 nameInput.value = userName.textContent;
 jobInput.value = occupation.textContent; 
 
-profileCloseButton.addEventListener('click', function(){ 
-popupClosed(popup);
+profileButton.addEventListener('click', function(){ popupOpened(cardCreate);});
+
+popupCloseButton.forEach((button) => {
+ button.addEventListener('click' , function (){ popupClosed(popup)
+ popupClosed(cardCreate);
+ popupClosed(popupImageHolder);
+ })
 });
 
 function handlePopupProfileSubmit(evt) {
@@ -34,10 +39,9 @@ function createCard(link, name){
   cardImage.src = link;
   cardImage.alt = 'просторы'
   cardImage.addEventListener('click', function(){
-  imageHolder.classList.add('image-overlay_active');
-  hh.setAttribute('src', link);
-  gridNetSpan.textContent = name;
-  imageHolderBox.classList.add('grid-net__item-image_active');
+  popupOpened(popupImageHolder);
+  popupImage.setAttribute('src', link);
+  popupSpan.textContent = name;
   });
   card.querySelector('.grid-net__item-title').textContent = name;
   card.querySelector('.grid-net__item-button').addEventListener('click', function(){
@@ -58,12 +62,12 @@ const cardElement = createCard(element.link, element.name);
 gridNet.prepend(cardElement)}
 );
 
-imageHolderCloseButton.addEventListener('click', function(){
-    imageHolder.classList.toggle('image-overlay_active');
-});
+/* imageHolderCloseButton.addEventListener('click', function(){
+    popupImageHolder.classList.toggle('image-overlay_active');
+}); */
 
 profileButton.addEventListener('click', function(){ popupOpened(cardCreate);});
-cardCreateCloseButton.addEventListener('click', function(){ popupClosed(cardCreate)});
+/* popupCloseButton.addEventListener('click', function(){ popupClosed(cardCreate)}); */
 
 function addCard(){ 
   const newCard = createCard(cardCreateInputLink.value, cardCreateInputName.value);
@@ -77,4 +81,4 @@ function handleCardformSubmit(evt) {
   cardCreateInputName.value = '';
   cardCreateInputLink.value = '';
  }
- createCardForm.addEventListener('submit', handleCardformSubmit);
+cardCreateForm.addEventListener('submit', handleCardformSubmit);

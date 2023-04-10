@@ -34,11 +34,12 @@
     <footer class="footer">
     <p class="footer__copyright">© 2020 Mesto Russia</p>
   </footer>
+  <!-- popup_type_profile-->
    <div class="popup popup_type_profile" aria-label="попап">
         <div class="popup__container">
           <h2 class="popup__title">Редактировать профиль</h2>
           <button class="popup__close-button" type="button"></button>
-          <form class="popup__form" name="popup-form">
+          <form class="popup__form" name="popup-form" id="profile-create-form">
             <input
               class="popup__input popup__input_type_username"
               id="username"
@@ -58,32 +59,35 @@
         </div>
       </div>
       <!-- cardCreateHolder-->
-      <div class="card-create popup popup_type_create-card" aria-label="создание-карточки">
-        <div class="card-create__container">
-          <h2 class="card-create__title">Новое место</h2>
-          <button class="card-create__close-button" type="button"></button>
-          <form class="card-create__form" name="card-create-form">
+      <div class="popup popup_type_create-card" aria-label="создание-карточки">
+        <div class="popup__container popup__container_type_create-card">
+          <h2 class="popup__title">Новое место</h2>
+          <button class="popup__close-button" type="button"></button>
+          <form class="popup__form" name="card-create-form" id="card-create-form">
             <input
-              class="card-create__input card-create__input_type_name"
+              class="popup__input popup__input_type_place-name"
               id="name"
               name="name"
               type="text"
               placeholder="Название"
             />
             <input
-              class="card-create__input card-create__input_type_link"
+              class="popup__input popup__input_type_link"
               id="link"
               name="link"
               type="text"
               placeholder="Ссылка на картинку"
             />
-            <button class="card-create__submit" type="submit">Сохранить</button>
+            <button class="popup__submit" type="submit">Сохранить</button>
           </form>
         </div>
       </div>
+      <!-- card template-->
       <template id='template-card'>
         <article class="grid-net__item">
+          <div class="grid-net__item-image-box">
           <img class="grid-net__item-image" alt="просторы">
+        </div>
           <button class="grid-net__item-button-delete" type="delete"></button>
           <div class="grid-net__item-box">
             <h2 class="grid-net__item-title"></h2>
@@ -91,15 +95,15 @@
           </div>
         </article>
       </template>
-
-       <div class="image-overlay">
-        <div class="image-overlay__holder">
-        <img class="image-overlay__picture">
-      <p class="image-overlay__span"></p>
-        <button class="image-overlay__button"></button>
+<!-- popup_type_image-overlay-->
+       <div class="popup popup_type_image-overlay">
+        <div class="popup__overlay-holder">
+        <img class="popup__image">
+      <p class="popup__span"></p>
+        <button class="popup__close-button"></button>
       </div>
       </div>
-      <script src="./scripts/constants.js"></script>
+      <script src="./scripts/constants.js"></script> 
     <script src="./scripts/index.js"></script>
   </body>
 </html>
