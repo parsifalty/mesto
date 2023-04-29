@@ -43,11 +43,11 @@ popup.forEach( (popup) => {
   function setEventListeners(formElement, config){ 
     const inputList = Array.from(formElement.querySelectorAll('.popup__input'));
     const buttonElement = formElement.querySelector('.popup__submit');
-    stateButton(inputList, buttonElement, config);
+    toggleStateButton(inputList, buttonElement, config);
     inputList.forEach( (inputElement) => 
     inputElement.addEventListener('input', function(){ 
       checkInputValidity(formElement, inputElement);
-      stateButton(inputList, buttonElement, config);
+      toggleStateButton(inputList, buttonElement, config);
     }))
    
   }
@@ -81,7 +81,7 @@ popup.forEach( (popup) => {
     }
   }
   
-  function stateButton(inputList, buttonElement, config){
+  function toggleStateButton(inputList, buttonElement, config){
     if (hasInValidInput(inputList)){ 
       buttonElement.classList.add(config.inactiveButtonClass);
       buttonElement.setAttribute('disabled', '')
