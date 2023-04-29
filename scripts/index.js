@@ -1,6 +1,6 @@
 
  profileEditButton.addEventListener('click', function(){
-openPopup(popup);
+openPopup(popupProfile);
 }); 
 
 function openPopup(element){
@@ -19,7 +19,7 @@ profileButton.addEventListener('click', function(){ openPopup(cardCreate);});
 
 popupCloseButton.forEach((button) => {
  button.addEventListener('click' , function (){ 
- closePopup(popup)
+ closePopup(popupProfile)
  closePopup(cardCreate);
  closePopup(popupImageHolder);
  })
@@ -29,7 +29,7 @@ function handlePopupProfileSubmit(evt) {
  evt.preventDefault();
  userName.textContent = nameInput.value;
  occupation.textContent = jobInput.value;
- closePopup(popup);
+ closePopup(popupProfile);
 }
 popupProfileForm.addEventListener('submit', handlePopupProfileSubmit);
 

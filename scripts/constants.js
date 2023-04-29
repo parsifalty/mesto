@@ -25,11 +25,10 @@ const initialCards = [
     }
   ];
 
-const popup = document.querySelector('.popup_type_profile');
+const popupProfile = document.querySelector('.popup_type_profile');
 const profileEditButton = document.querySelector('.profile__info-button');
 const userName = document.querySelector('.profile__info-fullname');
 const occupation = document.querySelector('.profile__info-occupation');
-const formElement = document.querySelector('.popup__form');
 const nameInput = document.querySelector('.popup__input_type_username');
 const jobInput = document.querySelector('.popup__input_type_occupation');
 const popupCloseButton = document.querySelectorAll('.popup__close-button');
@@ -48,4 +47,13 @@ const cardCreateInputLink = document.querySelector('.popup__input_type_link');
 const profileButton = document.querySelector('.profile__button');
 const itemArticle = document.querySelectorAll('.grid-net__item');
 const gridItemBox = document.querySelector('.grid-net__item-box');
-const gridNet = document.querySelector('.grid-net')
+const gridNet = document.querySelector('.grid-net');
+const popup = document.querySelectorAll('.popup');
+const config = {
+  formElement: '.popup__form',
+  inputElement: '.popup__input',
+  buttonElement: '.popup__submit',
+  inactiveButtonClass: 'popup__submit_inactive',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__input-error_active'
+}
