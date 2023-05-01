@@ -1,19 +1,5 @@
 //document.overlay.exit realisation 
-popup.forEach( (popup) => { 
-    popup.addEventListener('click', (evt) => { 
-      if(evt.target === popup){ 
-        closePopup(popup);
-      }
-    })
-  })
-  
-  document.addEventListener('keydown', (evt) => { 
-    if(evt.key === 'Escape'){ 
-      popup.forEach( (popup) => { 
-        closePopup(popup)
-      })
-    }
-  })
+
   //document.overlay.exit.event.keydown.esc
   // Showing error message
   const showInputError = function(formElement, inputElement, errorMessage, config){ 
@@ -30,7 +16,7 @@ popup.forEach( (popup) => {
     errorElement.textContent = '';
   }
   // Checking validity of each input set down below
-  const checkInputValidity = function(formElement, inputElement) { 
+  const checkInputValidity = function(formElement, inputElement, config) { 
     if(!inputElement.validity.valid){ 
       showInputError(formElement, inputElement, inputElement.validationMessage, config);
     }
@@ -41,19 +27,19 @@ popup.forEach( (popup) => {
   //Setting eventListeners to each input for validation check
   
   function setEventListeners(formElement, config){ 
-    const inputList = Array.from(formElement.querySelectorAll('.popup__input'));
-    const buttonElement = formElement.querySelector('.popup__submit');
+    const inputList = Array.from(formElement.querySelectorAll(config.inputElement));
+    const buttonElement = formElement.querySelector(config.buttonElement);
     toggleStateButton(inputList, buttonElement, config);
     inputList.forEach( (inputElement) => 
     inputElement.addEventListener('input', function(){ 
-      checkInputValidity(formElement, inputElement);
+      checkInputValidity(formElement, inputElement, config);
       toggleStateButton(inputList, buttonElement, config);
     }))
    
   }
   
   function enableValidation(config){ 
-    const formList = Array.from(document.querySelectorAll('.popup__form'));
+    const formList = Array.from(document.querySelectorAll(config.formElement));
     formList.forEach( (formElement) => {
    formElement.addEventListener('submit', (evt) => { 
     evt.preventDefault()
@@ -66,21 +52,23 @@ popup.forEach( (popup) => {
   
   //StateButton for the future function the button is going to get the validate inputs and respond the proper way
   
-  function hasInValidInput(inputList){ 
-    return inputList.some( (input => { 
-      return !input.validity.valid
-    }))
-  }
-
-  function checkFieldsFill (formElement, inputElement){ 
-    if(inputElement.textContent === ''){
-        return false
-    }
-    else { 
-        return true
-    }
-  }
   
+//toggleButtonState function for the inputs setted up below^ the main idea is to close it after the card is attached to the grid net
+
+  
+function hasInValidInput(inputList){ 
+  return inputList.some( (input => { 
+    return !input.validity.valid
+  }))
+}
+
+
+function checkFields(inputList){ 
+  return inputList.some( input => { 
+  return input.textContent === '' 
+  })
+}
+
   function toggleStateButton(inputList, buttonElement, config){
     if (hasInValidInput(inputList)){ 
       buttonElement.classList.add(config.inactiveButtonClass);

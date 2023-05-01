@@ -31,7 +31,7 @@ const userName = document.querySelector('.profile__info-fullname');
 const occupation = document.querySelector('.profile__info-occupation');
 const nameInput = document.querySelector('.popup__input_type_username');
 const jobInput = document.querySelector('.popup__input_type_occupation');
-const popupCloseButton = document.querySelectorAll('.popup__close-button');
+const popupCloseButtons = document.querySelectorAll('.popup__close-button');
 const hearts = document.querySelectorAll('.grid-net__item-button');
 const gridImages = document.querySelector('.grid-net__item-image');
 const gridTitle = document.querySelector('.grid-net__item-title');
@@ -48,7 +48,7 @@ const profileButton = document.querySelector('.profile__button');
 const itemArticle = document.querySelectorAll('.grid-net__item');
 const gridItemBox = document.querySelector('.grid-net__item-box');
 const gridNet = document.querySelector('.grid-net');
-const popup = document.querySelectorAll('.popup');
+const popups = document.querySelectorAll('.popup');
 const config = {
   formElement: '.popup__form',
   inputElement: '.popup__input',

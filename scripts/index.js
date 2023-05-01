@@ -1,23 +1,62 @@
+popups.forEach( (popup) => { 
+  popup.addEventListener('click', (evt) => { 
+    if(evt.target === popup){ 
+      closePopup(popup);
+    }
+  })
+})
+//////////////////
 
- profileEditButton.addEventListener('click', function(){
+let escapeListener;
+
+function closeEscape(evt){ 
+  if(evt.key === 'Escape'){
+    evt.preventDefault();
+    const activePopup = document.querySelector('.popup_active');
+    if (activePopup) {
+      closePopup(activePopup);
+    }
+  }
+}
+
+function setEscapeListener() { 
+  escapeListener = closeEscape;
+  document.addEventListener('keydown', escapeListener);
+}
+
+function removeEscapeListener(){ 
+  document.removeEventListener('keydown', escapeListener);
+  escapeListener = null;
+}
+
+
+
+////////////////////
+
+profileEditButton.addEventListener('click', function(){
 openPopup(popupProfile);
+nameInput.value = userName.textContent;
+jobInput.value = occupation.textContent; 
 }); 
 
 function openPopup(element){
 element.classList.add('popup_active');
+setEscapeListener();
 }
-
 
 function closePopup(element){ 
   element.classList.remove('popup_active');
+  removeEscapeListener()
 }
 
-nameInput.value = userName.textContent;
-jobInput.value = occupation.textContent; 
 
-profileButton.addEventListener('click', function(){ openPopup(cardCreate);});
 
-popupCloseButton.forEach((button) => {
+profileButton.addEventListener('click', function(){
+  openPopup(cardCreate);
+ 
+});
+
+popupCloseButtons.forEach((button) => {
  button.addEventListener('click' , function (){ 
  closePopup(popupProfile)
  closePopup(cardCreate);
@@ -38,10 +77,11 @@ function createCard(link, name){
   const card = templateCard.querySelector('.grid-net__item').cloneNode(true);
   const cardImage = card.querySelector('.grid-net__item-image');
   cardImage.src = link;
-  cardImage.alt = 'просторы'
+  cardImage.alt = name;
   cardImage.addEventListener('click', function(){
   openPopup(popupImageHolder);
   popupImage.setAttribute('src', link);
+  popupImage.setAttribute('alt', name)
   popupSpan.textContent = name;
   });
   card.querySelector('.grid-net__item-title').textContent = name;
@@ -63,18 +103,38 @@ const cardElement = createCard(element.link, element.name);
 gridNet.prepend(cardElement)}
 );
 
-profileButton.addEventListener('click', function(){ openPopup(cardCreate);});
-
 function addCard(){ 
   const newCard = createCard(cardCreateInputLink.value, cardCreateInputName.value);
   gridNet.prepend(newCard);
 }
 
 function handleCardformSubmit(evt) {
+  const inputList = Array.from(cardCreateForm.querySelectorAll(config.inputElement));
+  const buttonElement = cardCreateForm.querySelector(config.buttonElement);
+
+
   evt.preventDefault();
   addCard();
-  cardCreateInputName.value = '';
-  cardCreateInputLink.value = '';
+  evt.target.reset();
   closePopup(cardCreate);
+  toggleStateButton(inputList, buttonElement, config)
  }
 cardCreateForm.addEventListener('submit', handleCardformSubmit);
+
+/* function checkValidityButton(formElement, config){ 
+  toggleStateButton(inputList, buttonElement, config);
+} */
+
+function ggg(formElement, config){
+formElement.addEventListener('submit', function(event) {
+  event.preventDefault(); // Отменяем стандартное поведение формы
+
+  // Проверяем валидность формы и дезактивируем кнопку сабмита, если нужно
+  checkValidityButton(formElement, config);
+
+  // Добавляем обработчик изменения значений в инпутах
+  formElement.addEventListener('input', function() {
+    toggleStateButton(inputList, buttonElement, config);
+  });
+});
+}
