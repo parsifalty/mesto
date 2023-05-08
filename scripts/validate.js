@@ -63,11 +63,6 @@ function hasInValidInput(inputList){
 }
 
 
-function checkFields(inputList){ 
-  return inputList.some( input => { 
-  return input.textContent === '' 
-  })
-}
 
   function toggleStateButton(inputList, buttonElement, config){
     if (hasInValidInput(inputList)){ 
