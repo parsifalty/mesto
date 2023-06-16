@@ -127,7 +127,7 @@ cardCreateForm.addEventListener('submit', handleCardformSubmit);
   toggleStateButton(inputList, buttonElement, config);
 } */
 
-function ggg(formElement, config){
+/*function ggg(formElement, config){
 formElement.addEventListener('submit', function(event) {
   event.preventDefault(); // Отменяем стандартное поведение формы
 
@@ -139,7 +139,7 @@ formElement.addEventListener('submit', function(event) {
     toggleStateButton(inputList, buttonElement, config);
   });
 });
-}
+} */
 
 class Card { 
   constructor(card, templateSelector){ 

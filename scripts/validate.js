@@ -2,7 +2,7 @@
 
   //document.overlay.exit.event.keydown.esc
   // Showing error message
-  const showInputError = function(formElement, inputElement, errorMessage, config){ 
+ /* const showInputError = function(formElement, inputElement, errorMessage, config){ 
     const errorElement = document.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.add(config.inputErrorClass);
     errorElement.textContent = errorMessage;
@@ -74,5 +74,88 @@ function hasInValidInput(inputList){
       buttonElement.removeAttribute('disabled', '')
     }
   }
+  */
+  
+  class FormValidator { 
+    constructor(config, formElement){ 
+  this._config = config; 
+  this._formElement = formElement;
+  this._formInputElements = Array.from(this._formElement.querySelectorAll(this._config.inputElement));
+  this._formSubmitElement = this._formElement.querySelector(this._config.buttonElement);
+    }
+
+    enableValidation(){ 
+     this._toggleStateButton();
+      this._setEventListeners();
+    }
+
+    _setEventListeners(){ 
+      this._formInputElements.forEach(item => {
+        item.addEventListener('input', () => {
+          this._checkInputValidity(item);
+          this._toggleStateButton();
+        });
+      });
+    };
+
+    _checkInputValidity(inputElement){
+      if(!inputElement.validity.valid){
+        this._showInputError(inputElement)
+       }
+        else {
+        this._hideInputError(inputElement)
+       }
+     }
+
+     _showInputError(inputElement){
+      const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
+      inputElement.classList.add(this._config.inputErrorClass);
+      errorElement.textContent = inputElement.validationMessage;
+      errorElement.classList.add(this._config.errorClass);
+    }
+    // Hiding error message 
+    _hideInputError(inputElement){ 
+      const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
+      inputElement.classList.remove(this._config.inputErrorClass);
+      errorElement.classList.remove(this._config.errorClass);
+      errorElement.textContent = '';
+    }
   
   
+  _toggleStateButton(){
+    if(this._checkInputInvalidity()){ 
+      this._formSubmitElement.classList.add(this._config.inactiveButtonClass);
+      this._formSubmitElement.setAttribute('disabled', '');
+    } else { 
+      this._formSubmitElement.classList.remove(this._config.inactiveButtonClass);
+      this._formSubmitElement.removeAttribute('disabled');
+    }
+  }
+
+  _checkInputInvalidity(){ 
+    return this._formInputElements.some(input => { 
+      return !input.validity.valid;
+    });
+  }
+}
+  /*
+
+      _ggg(){
+this._formElement.addEventListener('submit', function(event) {
+  event.preventDefault(); // Отменяем стандартное поведение формы
+
+  // Проверяем валидность формы и дезактивируем кнопку сабмита, если нужно
+  this._checkValidityButton();
+
+  // Добавляем обработчик изменения значений в инпутах
+  this._formElement.addEventListener('input', function() {
+    this._toggleStateButton();
+  });
+});
+} 
+
+_checkValidityButton(){ 
+  this._toggleStateButton();
+}
+  }
+*/ 
