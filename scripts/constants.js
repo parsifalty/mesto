@@ -31,22 +31,16 @@ const userName = document.querySelector('.profile__info-fullname');
 const occupation = document.querySelector('.profile__info-occupation');
 const nameInput = document.querySelector('.popup__input_type_username');
 const jobInput = document.querySelector('.popup__input_type_occupation');
-const popupCloseButtons = document.querySelectorAll('.popup__close-button');
-const hearts = document.querySelectorAll('.grid-net__item-button');
-const gridImages = document.querySelector('.grid-net__item-image');
-const gridTitle = document.querySelector('.grid-net__item-title');
-const popupImageHolder = document.querySelector('.popup_type_image-overlay');
-const popupImageHolderBox = document.querySelector('.popup__overlay-holder');
+const popupCloseButtons = document.querySelectorAll('.popup__close-button')
 const popupImage = document.querySelector('.popup__image');
-const popupProfileForm = document.querySelector('#profile-create-form');
 const popupSpan = document.querySelector('.popup__span');
+const popupProfileForm = document.querySelector('#profile-create-form');
 const cardCreate = document.querySelector('.popup_type_create-card');
+const popupImageHolder = document.querySelector('.popup_type_image-overlay');
 const cardCreateForm = document.querySelector('#card-create-form');
 const cardCreateInputName = document.querySelector('.popup__input_type_place-name');
 const cardCreateInputLink = document.querySelector('.popup__input_type_link');
 const profileButton = document.querySelector('.profile__button');
-const itemArticle = document.querySelectorAll('.grid-net__item');
-const gridItemBox = document.querySelector('.grid-net__item-box');
 const gridNet = document.querySelector('.grid-net');
 const popups = document.querySelectorAll('.popup');
 const config = {
@@ -57,3 +51,5 @@ const config = {
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__input-error_active'
 }
+
+export { initialCards, popupProfile, profileEditButton, userName, occupation, nameInput, jobInput, popupCloseButtons, popupProfileForm, popupImageHolder, popupImage, popupSpan,  cardCreate, cardCreateForm, cardCreateInputName, cardCreateInputLink, profileButton,  gridNet, popups, config }

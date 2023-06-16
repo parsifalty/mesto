@@ -7,7 +7,7 @@
     }
 
     enableValidation(){ 
-     this._toggleStateButton();
+     this.toggleStateButton();
       this._setEventListeners();
      
     }
@@ -16,7 +16,7 @@
       this._formInputElements.forEach(item => {
         item.addEventListener('input', () => {
           this._checkInputValidity(item);
-          this._toggleStateButton();
+          this.toggleStateButton();
         
         });
       });
@@ -46,7 +46,7 @@
     }
   
   
-  _toggleStateButton(){
+  toggleStateButton(){
     if(this._checkInputInvalidity()){ 
       this._formSubmitElement.classList.add(this._config.inactiveButtonClass);
       this._formSubmitElement.setAttribute('disabled', '');

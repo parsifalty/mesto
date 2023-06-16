@@ -1,6 +1,7 @@
 import { Card } from '../scripts/Card.js'
 import { FormValidator } from './FormValidator.js'
-
+import { initialCards, popupProfile, profileEditButton, userName, occupation, nameInput, jobInput, popupCloseButtons, 
+   popupProfileForm, cardCreate, cardCreateForm, cardCreateInputName, cardCreateInputLink, profileButton, gridNet, popups, config } from './constants.js'
 
 popups.forEach( (popup) => { 
   popup.addEventListener('click', (evt) => { 
@@ -9,9 +10,7 @@ popups.forEach( (popup) => {
     }
   })
 })
-//////////////////
 
-let escapeListener;
 
 function closeEscape(evt){ 
   if(evt.key === 'Escape'){
@@ -24,13 +23,13 @@ function closeEscape(evt){
 }
 
 function setEscapeListener() { 
-  escapeListener = closeEscape;
-  document.addEventListener('keydown', escapeListener);
+  
+  document.addEventListener('keydown', closeEscape);
 }
 
 function removeEscapeListener(){ 
-  document.removeEventListener('keydown', escapeListener);
-  escapeListener = null;
+  document.removeEventListener('keydown', closeEscape);
+  
 }
 
 
@@ -59,9 +58,9 @@ profileButton.addEventListener('click', function(){
 
 popupCloseButtons.forEach((button) => {
  button.addEventListener('click' , function (){ 
- closePopup(popupProfile)
- closePopup(cardCreate);
- closePopup(popupImageHolder);
+ const closeButton = button.closest('.popup')
+ closePopup(closeButton)
+
  })
 });
 
@@ -73,69 +72,29 @@ function handlePopupProfileSubmit(evt) {
 }
 popupProfileForm.addEventListener('submit', handlePopupProfileSubmit);
 
- /* function createCard(link, name){
-  const templateCard = document.querySelector('#template-card').content;
-  const card = templateCard.querySelector('.grid-net__item').cloneNode(true);
-  const cardImage = card.querySelector('.grid-net__item-image');
-  cardImage.src = link;
-  cardImage.alt = name;
-  cardImage.addEventListener('click', function(){
-  openPopup(popupImageHolder);
-  popupImage.setAttribute('src', link);
-  popupImage.setAttribute('alt', name)
-  popupSpan.textContent = name;
-  });
-  card.querySelector('.grid-net__item-title').textContent = name;
-  card.querySelector('.grid-net__item-button').addEventListener('click', function(){
-  card.querySelector('.grid-net__item-button').classList.toggle('grid-net__item-button_active');
-  });
-  card.querySelector('.grid-net__item-box');
-  const deleteButton = card.querySelector('.grid-net__item-button-delete');
-  deleteButton.addEventListener('click', function(){
-    const listItem = deleteButton.closest('.grid-net__item');
-  
-    listItem.remove();
-  })
-  return card
-  }
+ 
 
-initialCards.forEach(element => {
-const cardElement = createCard(element.link, element.name);
-gridNet.prepend(cardElement)}
-);
-*/
-
-function addCard(){ 
-  const newCard = new Card({link:cardCreateInputLink.value, name:cardCreateInputName.value}, '#template-card');
+function addCard(link, url){ 
+  const newCard = new Card({link:link , name: url}, '#template-card');
   const cardElement = newCard.generateCard()
   gridNet.prepend(cardElement);
 } 
 
 function handleCardformSubmit(evt) {
   evt.preventDefault();
-  addCard();
+  addCard(cardCreateInputLink.value, cardCreateInputName.value);
   evt.target.reset();
   closePopup(cardCreate);
-  addCardForm._toggleStateButton()
+  addCardForm.toggleStateButton()
  }
 cardCreateForm.addEventListener('submit', handleCardformSubmit);
 
-/*
-
- function ggg(config, formElement){
-formElement.addEventListener('submit', function(event) {
-  event.preventDefault(); // Отменяем стандартное поведение формы
-
-  // Проверяем валидность формы и дезактивируем кнопку сабмита, если нужно
-  checkValidityButton(formElement, config);
-
-  // Добавляем обработчик изменения значений в инпутах
-  formElement.addEventListener('input', function() {
-    toggleStateButton(inputList, buttonElement, config);
-  });
-});
-} 
-*/
+initialCards.forEach( item => { 
+  const card = new Card(item, '#template-card');
+  const cardElement = card.generateCard()
+ 
+  gridNet.prepend(cardElement)
+ })
 
 
 const profileForm = new FormValidator(config, document.querySelector('.popup_type_profile'))
@@ -144,3 +103,6 @@ profileForm.enableValidation()
 
 const addCardForm = new FormValidator(config, document.querySelector('.popup_type_create-card'))
 addCardForm.enableValidation()
+
+
+export { openPopup }

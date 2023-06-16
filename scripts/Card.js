@@ -1,4 +1,7 @@
- class Card { 
+ import { openPopup } from '../scripts/index.js'
+import { popupImage, popupSpan, popupImageHolder } from './constants.js'
+ 
+class Card { 
     constructor(card, templateSelector){ 
       this._image = card.link,
       this._title = card.name,
@@ -22,12 +25,6 @@
       openPopup(popupImageHolder)
     }
   
-    /* _handleClosePopup(){ 
-      popupImage.src = '';
-      popupSpan.textContent = '';
-      popupImage.alt = '';
-      closePopup(popupImageHolder)
-    } */
   
   _setEventListeners(){ 
     this._element = this._getTemplate()
@@ -41,9 +38,9 @@
   
     const deleteButton = this._element.querySelector('.grid-net__item-button-delete');
     deleteButton.addEventListener('click', function(){
-      const listItem = deleteButton.closest('.grid-net__item');
+      this.element = deleteButton.closest('.grid-net__item');
     
-      listItem.remove();
+      this.element.remove();
     })
   
   }
@@ -58,13 +55,6 @@
     return this._element;
    }
   }
-  
-  initialCards.forEach( item => { 
-   const card = new Card(item, '#template-card');
-   const cardElement = card.generateCard()
-  
-   gridNet.prepend(cardElement)
-  })
-  
+    
     
   export { Card }
