@@ -1,3 +1,7 @@
+import { Card } from '../scripts/Card.js'
+import { FormValidator } from './FormValidator.js'
+
+
 popups.forEach( (popup) => { 
   popup.addEventListener('click', (evt) => { 
     if(evt.target === popup){ 
@@ -29,9 +33,6 @@ function removeEscapeListener(){
   escapeListener = null;
 }
 
-
-
-////////////////////
 
 profileEditButton.addEventListener('click', function(){
 openPopup(popupProfile);
@@ -111,23 +112,17 @@ function addCard(){
 } 
 
 function handleCardformSubmit(evt) {
-  const inputList = Array.from(cardCreateForm.querySelectorAll(config.inputElement));
-  const buttonElement = cardCreateForm.querySelector(config.buttonElement);
-
-
   evt.preventDefault();
   addCard();
   evt.target.reset();
   closePopup(cardCreate);
-  toggleStateButton(inputList, buttonElement, config)
+  addCardForm._toggleStateButton()
  }
 cardCreateForm.addEventListener('submit', handleCardformSubmit);
 
-/* function checkValidityButton(formElement, config){ 
-  toggleStateButton(inputList, buttonElement, config);
-} */
+/*
 
-/*function ggg(formElement, config){
+ function ggg(config, formElement){
 formElement.addEventListener('submit', function(event) {
   event.preventDefault(); // Отменяем стандартное поведение формы
 
@@ -139,75 +134,13 @@ formElement.addEventListener('submit', function(event) {
     toggleStateButton(inputList, buttonElement, config);
   });
 });
-} */
+} 
+*/
 
-class Card { 
-  constructor(card, templateSelector){ 
-    this._image = card.link,
-    this._title = card.name,
-    this._templateSelector = templateSelector
-  }
 
-  _getTemplate() { 
-const cardElement = document 
-.querySelector(this._templateSelector)
-.content
-.querySelector('.grid-net__item')
-.cloneNode(true)
+const profileForm = new FormValidator(config, document.querySelector('.popup_type_profile'))
+profileForm.enableValidation()
 
-return cardElement
-  }
 
-  _handleOpenPopup(){ 
-    popupImage.src = this._image;
-    popupImage.alt = this._title;
-    popupSpan.textContent = this._title;
-    openPopup(popupImageHolder)
-  }
-
-  /* _handleClosePopup(){ 
-    popupImage.src = '';
-    popupSpan.textContent = '';
-    popupImage.alt = '';
-    closePopup(popupImageHolder)
-  } */
-
-_setEventListeners(){ 
-  this._element = this._getTemplate()
-  this._element.querySelector('.grid-net__item-image').addEventListener('click', () => { 
-    this._handleOpenPopup()
-  })
-
-  this._element.querySelector('.grid-net__item-button').addEventListener('click', (evt) => {
-    evt.target.classList.toggle('grid-net__item-button_active')
-  })
-
-  const deleteButton = this._element.querySelector('.grid-net__item-button-delete');
-  deleteButton.addEventListener('click', function(){
-    const listItem = deleteButton.closest('.grid-net__item');
-  
-    listItem.remove();
-  })
-
-}
-
- generateCard(){ 
-  this._element = this._getTemplate()
-  this._setEventListeners()
-
-  this._element.querySelector('.grid-net__item-image').src = this._image;
-  this._element.querySelector('.grid-net__item-title').textContent = this._title;
-  
-  return this._element;
- }
-}
-
-initialCards.forEach( item => { 
- const card = new Card(item, '#template-card');
- const cardElement = card.generateCard()
-
- gridNet.prepend(cardElement)
-})
-
-  
-
+const addCardForm = new FormValidator(config, document.querySelector('.popup_type_create-card'))
+addCardForm.enableValidation()
