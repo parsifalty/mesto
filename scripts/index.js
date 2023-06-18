@@ -58,8 +58,8 @@ profileButton.addEventListener('click', function(){
 
 popupCloseButtons.forEach((button) => {
  button.addEventListener('click' , function (){ 
- const closeButton = button.closest('.popup')
- closePopup(closeButton)
+ const currentPopup = button.closest('.popup')
+ closePopup(currentPopup)
 
  })
 });
@@ -75,7 +75,7 @@ popupProfileForm.addEventListener('submit', handlePopupProfileSubmit);
  
 
 function addCard(link, url){ 
-  const newCard = new Card({link:link , name: url}, '#template-card');
+  const newCard = new Card({link:link , name: url}, '#template-card', openPopup);
   const cardElement = newCard.generateCard()
   gridNet.prepend(cardElement);
 } 
@@ -90,10 +90,7 @@ function handleCardformSubmit(evt) {
 cardCreateForm.addEventListener('submit', handleCardformSubmit);
 
 initialCards.forEach( item => { 
-  const card = new Card(item, '#template-card');
-  const cardElement = card.generateCard()
- 
-  gridNet.prepend(cardElement)
+  addCard(item.link, item.name);
  })
 
 

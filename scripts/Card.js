@@ -1,12 +1,14 @@
- import { openPopup } from '../scripts/index.js'
+
 import { popupImage, popupSpan, popupImageHolder } from './constants.js'
  
 class Card { 
-    constructor(card, templateSelector){ 
-      this._image = card.link,
+    constructor(card, templateSelector, openPopupImageHolder){
       this._title = card.name,
-      this._templateSelector = templateSelector
-    }
+      this._image = card.link,
+      this._templateSelector = templateSelector,
+      this._openImagePopup = openPopupImageHolder 
+      }
+    
   
     _getTemplate() { 
   const cardElement = document 
@@ -22,7 +24,11 @@ class Card {
       popupImage.src = this._image;
       popupImage.alt = this._title;
       popupSpan.textContent = this._title;
-      openPopup(popupImageHolder)
+      this._openImagePopup(popupImageHolder)
+    }
+
+    _openImagePopup(evt){ 
+      this._openPopupImageHolder
     }
   
   
@@ -37,10 +43,8 @@ class Card {
     })
   
     const deleteButton = this._element.querySelector('.grid-net__item-button-delete');
-    deleteButton.addEventListener('click', function(){
-      this.element = deleteButton.closest('.grid-net__item');
-    
-      this.element.remove();
+    deleteButton.addEventListener('click', function(evt){
+   evt.target.closest('.grid-net__item').remove();
     })
   
   }
