@@ -26,11 +26,6 @@ class Card {
       popupSpan.textContent = this._title;
       this._openImagePopup(popupImageHolder)
     }
-
-    _openImagePopup(evt){ 
-      this._openPopupImageHolder
-    }
-  
   
   _setEventListeners(){ 
     this._element = this._getTemplate()
@@ -43,8 +38,8 @@ class Card {
     })
   
     const deleteButton = this._element.querySelector('.grid-net__item-button-delete');
-    deleteButton.addEventListener('click', function(evt){
-   evt.target.closest('.grid-net__item').remove();
+    deleteButton.addEventListener('click', () => {
+   this._element.remove()
     })
   
   }
