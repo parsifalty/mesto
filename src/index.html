@@ -4,17 +4,16 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./pages/index.css" />
     <title>Mesto</title>
   </head>
   <body class="page">
     <header class="header">
-      <img src="./images/Vector.svg" class="header__logo" alt="логотип" />
+      <img src="<%=require('./images/Vector.svg')%>" class="header__logo" alt="логотип" />
     </header>
     <main class="content">
       <section class="profile" aria-label="Профиль">
         <img
-          src="./images/image.jpg"
+          src="<%=require('./images/image.jpg')%>"
           class="profile__avatar"
           alt="аватар-профиля"
         />
@@ -122,7 +121,6 @@
       <p class="popup__span"></p>
         <button class="popup__close-button"></button>
       </div>
-      </div>
-    <script src="./scripts/index.js" type="module"></script>
+    </div>
   </body>
 </html>

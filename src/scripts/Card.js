@@ -1,12 +1,12 @@
 
-import { popupImage, popupSpan, popupImageHolder } from './constants.js'
+import { popupImageHolder } from './constants.js'
  
 class Card { 
-    constructor(card, templateSelector, openPopupImageHolder){
+    constructor(card, templateSelector, handleCardClick){
       this._title = card.name,
       this._image = card.link,
       this._templateSelector = templateSelector,
-      this._openImagePopup = openPopupImageHolder 
+      this._handleCardClick = handleCardClick
       }
     
   
@@ -20,18 +20,13 @@ class Card {
   return cardElement
     }
   
-    _handleOpenPopup(){ 
-      popupImage.src = this._image;
-      popupImage.alt = this._title;
-      popupSpan.textContent = this._title;
-      this._openImagePopup(popupImageHolder)
+    _handleOpenPopup = () => { 
+      this._handleCardClick({name: this._title, link: this._image});
     }
   
   _setEventListeners(){ 
     this._element = this._getTemplate()
-    this._element.querySelector('.grid-net__item-image').addEventListener('click', () => { 
-      this._handleOpenPopup()
-    })
+    this._element.querySelector('.grid-net__item-image').addEventListener('click',this._handleOpenPopup)
   
     this._element.querySelector('.grid-net__item-button').addEventListener('click', (evt) => {
       evt.target.classList.toggle('grid-net__item-button_active')
