@@ -1,88 +1,88 @@
-import { Card } from './scripts/Card.js'
-import { FormValidator } from './scripts/FormValidator.js'
-import { Section } from './scripts/Section.js'
-import Popup from './scripts/Popup.js'
-import UserInfo from './scripts/UserInfo.js'
-import { initialCards, popupProfile, profileEditButton, userName, occupation, nameInput, jobInput, popupCloseButtons, 
-  popupProfileForm, cardCreate, cardCreateForm, cardCreateInputName, cardCreateInputLink, profileButton, gridNet, popups, config, popupImageHolder, popupImage } from './scripts/constants.js'
-import PopupWithForm from './scripts/PopupWithForm.js'
-import PopupWithImage from './scripts/PopupWithImage.js'
-import './pages/index.css'
+import { Card } from "./components /Card.js";
+import { FormValidator } from "./components /FormValidator.js";
+import { Section } from "./components /Section.js";
+import UserInfo from "./components /UserInfo.js";
+import {
+  initialCards,
+  profileButton,
+  profileEditButton,
+  nameInput,
+  jobInput,
+  config,
+} from "./utils/constants.js";
+import PopupWithForm from "./components /PopupWithForm.js";
+import PopupWithImage from "./components /PopupWithImage.js";
+import "./pages/index.css";
 
-const profileForm = new FormValidator(config, document.querySelector('.popup_type_profile'))
-profileForm.enableValidation()
+const profileForm = new FormValidator(
+  config,
+  document.querySelector(".popup_type_profile")
+);
+profileForm.enableValidation();
 
+const addCardForm = new FormValidator(
+  config,
+  document.querySelector(".popup_type_create-card")
+);
+addCardForm.enableValidation();
 
-const addCardForm = new FormValidator(config, document.querySelector('.popup_type_create-card'))
-addCardForm.enableValidation()
-
-const profilePopup = new Popup(popupProfile)
-profilePopup._setEventListeners()
-
-const cardPopup = new Popup(cardCreate)
-cardPopup._setEventListeners()
-
-let userData = new UserInfo({
-  nameSelector: '.profile__info-fullname',
-  occupationSelector: '.profile__info-occupation'
-})
-
-profileEditButton.addEventListener('click', () => {
-profilePopup.open();
-const {name, occupation} = userData.getUserInfo()
-jobInput.value = occupation;
-nameInput.value = name;
-}); 
-
-const profileFormMade = new PopupWithForm(popupProfile, {
-  formCallBack: handlePopupProfileSubmit => { 
-    handlePopupProfileSubmit.occupation = jobInput.value
-    handlePopupProfileSubmit.name = nameInput.value
-    userData.setUserInfo(handlePopupProfileSubmit)
-    profilePopup.close();
-  } 
-})
-profileFormMade.setEventListeners()
-
-profileButton.addEventListener('click', () => {
-  cardPopup.open();
+const userData = new UserInfo({
+  nameSelector: ".profile__info-fullname",
+  occupationSelector: ".profile__info-occupation",
 });
 
-const popupWithImage = new PopupWithImage(popupImageHolder)
-popupWithImage._setEventListeners()
+const profileFormMade = new PopupWithForm(".popup_type_profile", {
+  formCallBack: (profileData) => {
+    console.log(profileData);
+    userData.setUserInfo(profileData);
+    profileFormMade.close();
+  },
+});
 
+profileFormMade.setEventListeners();
 
-function createCard(link, name){ 
-  const newCard = new Card({link:link , name: name}, '#template-card', popupWithImage.open);
-  const cardElement = newCard.generateCard()
-  return cardElement
-} 
+profileEditButton.addEventListener("click", () => {
+  profileFormMade.open();
+  const { username, occupation } = userData.getUserInfo();
+  jobInput.value = occupation;
+  nameInput.value = username;
+});
 
-const cardList = new Section( 
+const popupWithImage = new PopupWithImage(".popup_type_image-overlay");
+popupWithImage.setEventListeners();
+
+function createCard(link, name) {
+  const newCard = new Card(
+    { link: link, name: name },
+    "#template-card",
+    popupWithImage.open
+  );
+  return newCard.generateCard();
+}
+
+const cardList = new Section(
   {
     items: initialCards,
-    renderer: (item) => { 
-     const card = createCard(item.link, item.name)
+    renderer: (item) => {
+      const card = createCard(item.link, item.name);
       cardList.addItem(card);
-    }
-  }, gridNet
-)
+    },
+  },
+  ".grid-net"
+);
 
-cardList.renderItems()
+cardList.renderItems();
 
+const cardFormMade = new PopupWithForm(".popup_type_create-card", {
+  formCallBack: (newCardData) => {
+    const card = createCard(newCardData.link, newCardData.name);
+    cardList.addItem(card);
+    cardFormMade.close();
+  },
+});
+cardFormMade.setEventListeners();
 
- const cardFormMade = new PopupWithForm(cardCreate, { 
-  formCallBack: handleCardformSubmit => { 
-   const card = createCard(handleCardformSubmit.link, handleCardformSubmit.name);
-   cardList.addItem(card)
-    cardFormMade._close()
-    addCardForm.toggleStateButton()
-  }
- })
-cardFormMade.setEventListeners()
-
-
-
-
-
-
+profileButton.addEventListener("click", () => {
+  cardFormMade.open();
+  addCardForm.toggleStateButton();
+});
