@@ -1,7 +1,7 @@
-import { Card } from "./components /Card.js";
-import { FormValidator } from "./components /FormValidator.js";
-import { Section } from "./components /Section.js";
-import UserInfo from "./components /UserInfo.js";
+import { Card } from "../components/Card.js";
+import { FormValidator } from "../components/FormValidator.js";
+import { Section } from "../components/Section.js";
+import UserInfo from "../components/UserInfo.js";
 import {
   initialCards,
   profileButton,
@@ -9,22 +9,22 @@ import {
   nameInput,
   jobInput,
   config,
-} from "./utils/constants.js";
-import PopupWithForm from "./components /PopupWithForm.js";
-import PopupWithImage from "./components /PopupWithImage.js";
-import "./pages/index.css";
+} from "../utils/constants.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import "./index.css";
 
-const profileForm = new FormValidator(
+const profileValidator = new FormValidator(
   config,
   document.querySelector(".popup_type_profile")
 );
-profileForm.enableValidation();
+profileValidator.enableValidation();
 
-const addCardForm = new FormValidator(
+const addCardValidator = new FormValidator(
   config,
   document.querySelector(".popup_type_create-card")
 );
-addCardForm.enableValidation();
+addCardValidator.enableValidation();
 
 const userData = new UserInfo({
   nameSelector: ".profile__info-fullname",
