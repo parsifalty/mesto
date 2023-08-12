@@ -48,5 +48,5 @@
 @import url(../blocks/popup/__input/_type/_active/popup__input_type_active.css);
 @import url(../blocks/popup/__submit/_type-confirm/popup__submit_type-confirm.css);
 @import url(../blocks/profile/__avatar-area/profile__avatar-area.css);
-@import url(../blocks/profile/__avatar/_type-edit/profile__avatar_type-edit.css);
+@import url(../blocks/profile/__avatar-area-button/profile__avatar-area-button.css);
 @import url(../blocks/popup/__container/_type-avatar/popup__container_type-avatar.css);

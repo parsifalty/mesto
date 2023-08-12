@@ -29,7 +29,7 @@ const profileEditButton = document.querySelector(".profile__info-button");
 const nameInput = document.querySelector(".popup__input_type_username");
 const jobInput = document.querySelector(".popup__input_type_occupation");
 const profileButton = document.querySelector(".profile__button");
-const avatarButton = document.querySelector(".profile__avatar_type-edit");
+const avatarButton = document.querySelector(".profile__avatar-area-button");
 //Она нужнв чтобы мы могли открыть попап создания карточки в секции под названием профиль
 // так же есть попап под названием профильный редактор
 
