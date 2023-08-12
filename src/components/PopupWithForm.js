@@ -6,10 +6,10 @@ export default class PopupWithForm extends Popup {
       (this._formCallBack = formCallBack),
       (this._form = this._popup.querySelector(".popup__form")),
       (this._inputList = Array.from(
-        this._form.querySelectorAll(".popup__input"))),
-        (this._sendButton = this._popup.querySelector('.popup__submit')),
-        (this._sendButtonText = this._sendButton.textContent)
-    
+        this._form.querySelectorAll(".popup__input")
+      )),
+      (this._sendButton = this._popup.querySelector(".popup__submit")),
+      (this._sendButtonText = this._sendButton.textContent);
   }
 
   _getInputValues() {
@@ -20,16 +20,15 @@ export default class PopupWithForm extends Popup {
     });
 
     return inputValues;
-    
   }
 
-  setButtonText(){ 
-    this._sendButton.textContent = 'Сохранение...'
+  setButtonText() {
+    this._sendButton.textContent = "Сохранение...";
   }
 
-  resetButtonText(){
-  this._sendButton.textContent = this._sendButtonText
-}
+  resetButtonText() {
+    this._sendButton.textContent = this._sendButtonText;
+  }
 
   setEventListeners() {
     super.setEventListeners();
