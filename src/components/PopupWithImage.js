@@ -12,6 +12,7 @@ export default class PopupWithImage extends Popup {
     super.open(),
       //Именование открытой картинки
       (this._popupDescription.textContent = card.name);
+      console.log(card)
     //Ссылка на картинку
     this._popupImage.src = card.link;
     //Надпись для прочтения или для показа во время ошибки загрузки изображения

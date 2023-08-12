@@ -17,6 +17,8 @@
 @import url(../blocks/grid-net/__item-button/_active/grid-net__item-button_active.css);
 @import url(../blocks/grid-net/__item-image/grid-net__item-image.css);
 @import url(../blocks/grid-net/__item-title/grid-net__item-title.css);
+@import url(../blocks/grid-net/__item-number/grid-net__item-number.css);
+@import url(../blocks/grid-net/__item-user-box/grid-net__item-user-box.css);
 @import url(../blocks/grid-net/__item/grid-net__item.css);
 @import url(../blocks/grid-net/__item-image/_active/grid-net__item-image_active.css);
 @import url(../blocks/grid-net/__item-button-delete/grid-net__item-button-delete.css);
@@ -38,7 +40,13 @@
 @import url(../blocks/popup/__overlay-holder/popup__overlay-holder.css);
 @import url(../blocks/popup/__submit/_inactive/popup__submit_inactive.css);
 @import url(../blocks/popup/__field/popup__field.css);
+@import url(../blocks/popup/__title/_type_delete-card/popup__title_type_delete-card.css);
+@import url(../blocks/popup/__container/_type_delete/popup__container_type_delete.css);
 @import url(../blocks/popup/__input-error/popup__input-error.css);
 @import url(../blocks/popup/__input-error/_active/popup__input-error_active.css);
 @import url(../blocks/popup/__input/_type/_error/popup__input_type_error.css);
 @import url(../blocks/popup/__input/_type/_active/popup__input_type_active.css);
+@import url(../blocks/popup/__submit/_type-confirm/popup__submit_type-confirm.css);
+@import url(../blocks/profile/__avatar-area/profile__avatar-area.css);
+@import url(../blocks/profile/__avatar/_type-edit/profile__avatar_type-edit.css);
+@import url(../blocks/popup/__container/_type-avatar/popup__container_type-avatar.css);

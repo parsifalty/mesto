@@ -12,17 +12,20 @@
     </header>
     <main class="content">
       <section class="profile" aria-label="Профиль">
+        <div class="profile__avatar-area">
         <img
-          src="<%=require('./images/image.jpg')%>"
+          src=""
           class="profile__avatar"
           alt="аватар-профиля"
         />
+        <button class="profile__avatar_type-edit" type="button"></button>
+        </div>
         <div class="profile__info">
           <div class="profile__info-box">
-            <h1 class="profile__info-fullname">Жак-Ив Кусто</h1>
+            <h1 class="profile__info-fullname"></h1>
             <button class="profile__info-button" type="button"></button>
           </div>
-          <p class="profile__info-occupation">Исследователь фронтэнда</p>
+          <p class="profile__info-occupation"></p>
         </div>
         <button class="profile__button" type="button"></button>
       </section>
@@ -112,7 +115,10 @@
           <button class="grid-net__item-button-delete" type="delete"></button>
           <div class="grid-net__item-box">
             <h2 class="grid-net__item-title"></h2>
+            <div class="grid-net__item-user-box">
             <button class="grid-net__item-button"></button>
+            <span class="grid-net__item-number"></span>
+          </div>
           </div>
         </article>
       </template>
@@ -122,6 +128,28 @@
         <img class="popup__image">
       <p class="popup__span"></p>
         <button class="popup__close-button"></button>
+      </div>
+    </div>
+    <!-- popup_type_delete-card-->
+    <div class="popup popup_type_delete-card">
+      <div class="popup__container popup__container_type-delete">
+        <h2 class="popup__title popup__title_type_delete-card">Вы уверены ?</h2>
+        <button class="popup__close-button" type="button"></button>
+        <button class="popup__submit popup__submit_type-confirm" type="button">Да</button> 
+      </div>
+    </div>
+    <!-- popup_type_profile-avatar-change-->
+    <div class="popup popup_type_profile-avatar">
+      <div class="popup__container popup__container_type-avatar">
+        <h2 class="popup__title">Обновить аватар</h2>
+        <button type="button" class="popup__close-button"></button>
+        <form class="popup__form" name="avatar-form" id="avatar-form" novalidate>
+         <label class="popup__field">
+          <input class="popup__input popup__input_type_avatar" name="avatar" id="avatar" minlength="5" maxlength="200" type="url" required placeholder="Ссылка"> 
+          <span class="avatar-error popup__input-error"></span>
+        </label>
+        <button type="submit" class="popup__submit">Сохранить</button>
+        </form>
       </div>
     </div>
   </body>
