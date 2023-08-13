@@ -28,30 +28,6 @@ const api = new Api({
 
 let userId;
 
-api
-  .getUserFromServer()
-  .then((res) => (userId = res._id))
-  .catch((err) => console.error(err));
-
-api
-  .getInitialCards()
-  .then((res) => {
-    const cardList = new Section(
-      {
-        items: res,
-        renderer: (item) => {
-          const card = createCard(item);
-          cardList.addItem(card);
-        },
-      },
-      ".grid-net"
-    );
-    cardList.renderItems();
-  })
-  .catch((err) => {
-    console.err(err);
-  });
-
 const profileValidator = new FormValidator(
   config,
   document.querySelector(".popup_type_profile")
@@ -97,7 +73,6 @@ const profileFormMade = new PopupWithForm(".popup_type_profile", {
       })
       .then(() => {
         profileFormMade.close();
-       
       })
       .catch((err) => {
         console.log(err);
@@ -128,7 +103,6 @@ popupWithImage.setEventListeners();
 const popupWithDelete = new PopupWithDelete(
   ".popup_type_delete-card",
   (card) => {
-    popupWithDelete.setButtonText();
     api
       .deleteCard(card._cardId)
       .then(() => {
@@ -139,9 +113,6 @@ const popupWithDelete = new PopupWithDelete(
       .catch((err) => {
         console.log(err);
       })
-      .finally(() => {
-        popupWithDelete.resetButtonText();
-      });
   }
 );
 popupWithDelete.setEventListeners();
@@ -184,7 +155,9 @@ const cardFormMade = new PopupWithForm(".popup_type_create-card", {
     cardFormMade.setButtonText();
     api
       .addCard(newCardData)
-      .then(cardFormMade.close())
+      .then((card) => { 
+        initialCardsPrepend.addItem(createCard(card))
+        cardFormMade.close()})
       .catch((err) => {
         console.error(err);
       })
@@ -239,12 +212,12 @@ function sectionRenderer(data) {
 
 Promise.all([api.getUserFromServer(), api.getInitialCards()])
   .then(([userInfo, cards]) => {
+    userId = userInfo._id;
     const { name: username, about: occupation, _id, avatar } = userInfo;
     userData.setUserInfo({ username, occupation, _id, avatar });
     sectionRenderer(cards);
-    userId = _id;
-    console.log(userId);
   })
   .catch((err) => {
-    console.err(err);
+    console.error(err);
   });
+
