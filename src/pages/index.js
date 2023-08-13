@@ -97,6 +97,7 @@ const profileFormMade = new PopupWithForm(".popup_type_profile", {
       })
       .then(() => {
         profileFormMade.close();
+       
       })
       .catch((err) => {
         console.log(err);
@@ -133,6 +134,7 @@ const popupWithDelete = new PopupWithDelete(
       .then(() => {
         card.removeCardElement();
         popupWithDelete.close();
+        
       })
       .catch((err) => {
         console.log(err);
