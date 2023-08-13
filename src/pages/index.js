@@ -16,6 +16,8 @@ import "./index.css";
 import PopupWithDelete from "../components/PopupWithDelete.js";
 import Api from "../components/Api.js";
 
+let initialCardsPrepend;
+
 const api = new Api({
   baseUrl: "https://mesto.nomoreparties.co/v1/cohort-72",
   headers: {
@@ -25,23 +27,30 @@ const api = new Api({
 });
 
 let userId;
-api.getUserFromServer().then((res) => {
-  userId = res._id;
-});
 
-api.getInitialCards().then((res) => {
-  const cardList = new Section(
-    {
-      items: res,
-      renderer: (item) => {
-        const card = createCard(item);
-        cardList.addItem(card);
+api
+  .getUserFromServer()
+  .then((res) => (userId = res._id))
+  .catch((err) => console.error(err));
+
+api
+  .getInitialCards()
+  .then((res) => {
+    const cardList = new Section(
+      {
+        items: res,
+        renderer: (item) => {
+          const card = createCard(item);
+          cardList.addItem(card);
+        },
       },
-    },
-    ".grid-net"
-  );
-  cardList.renderItems();
-});
+      ".grid-net"
+    );
+    cardList.renderItems();
+  })
+  .catch((err) => {
+    console.err(err);
+  });
 
 const profileValidator = new FormValidator(
   config,
@@ -68,10 +77,15 @@ const userData = new UserInfo({
   avatarSelector: ".profile__avatar",
 });
 
-api.getUserFromServer().then((res) => {
-  userData.setUserInfo(res);
-  userData.setUserAvatar(res);
-});
+api
+  .getUserFromServer()
+  .then((res) => {
+    userData.setUserInfo(res);
+    userData.setUserAvatar(res);
+  })
+  .catch((err) => {
+    console.error(err);
+  });
 
 const profileFormMade = new PopupWithForm(".popup_type_profile", {
   formCallBack: (profileData) => {
@@ -81,14 +95,15 @@ const profileFormMade = new PopupWithForm(".popup_type_profile", {
       .then((res) => {
         userData.setUserInfo(res);
       })
+      .then(() => {
+        profileFormMade.close();
+      })
       .catch((err) => {
         console.log(err);
       })
       .finally(() => {
         profileFormMade.resetButtonText();
       });
-
-    profileFormMade.close();
   },
 });
 
@@ -96,9 +111,14 @@ profileFormMade.setEventListeners();
 
 profileEditButton.addEventListener("click", () => {
   profileFormMade.open();
-  api.getUserFromServer().then((res) => {
-    (jobInput.value = res.about), (nameInput.value = res.name);
-  });
+  api
+    .getUserFromServer()
+    .then((res) => {
+      (jobInput.value = res.about), (nameInput.value = res.name);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
 });
 
 const popupWithImage = new PopupWithImage(".popup_type_image-overlay");
@@ -107,6 +127,7 @@ popupWithImage.setEventListeners();
 const popupWithDelete = new PopupWithDelete(
   ".popup_type_delete-card",
   (card) => {
+    popupWithDelete.setButtonText();
     api
       .deleteCard(card._cardId)
       .then(() => {
@@ -115,6 +136,9 @@ const popupWithDelete = new PopupWithDelete(
       })
       .catch((err) => {
         console.log(err);
+      })
+      .finally(() => {
+        popupWithDelete.resetButtonText();
       });
   }
 );
@@ -158,13 +182,13 @@ const cardFormMade = new PopupWithForm(".popup_type_create-card", {
     cardFormMade.setButtonText();
     api
       .addCard(newCardData)
+      .then(cardFormMade.close())
       .catch((err) => {
-        console.log(err);
+        console.error(err);
       })
       .finally(() => {
         cardFormMade.resetButtonText();
       });
-    cardFormMade.close();
   },
 });
 cardFormMade.setEventListeners();
@@ -181,6 +205,7 @@ const avatarForm = new PopupWithForm(".popup_type_profile-avatar", {
       .addNewAvatar(avatarData)
       .then((res) => {
         userData.setUserAvatar(res);
+        avatarForm.close();
       })
       .catch((err) => {
         console.log(err);
@@ -188,7 +213,6 @@ const avatarForm = new PopupWithForm(".popup_type_profile-avatar", {
       .finally(() => {
         avatarForm.resetButtonText();
       });
-    avatarForm.close();
   },
 });
 avatarForm.setEventListeners();
@@ -196,3 +220,29 @@ avatarForm.setEventListeners();
 avatarButton.addEventListener("click", () => {
   avatarForm.open();
 });
+
+function sectionRenderer(data) {
+  initialCardsPrepend = new Section(
+    {
+      items: data,
+      renderer: (item) => {
+        const newCard = new createCard(item);
+        initialCardsPrepend.addItem(newCard);
+      },
+    },
+    ".grid-net"
+  );
+  initialCardsPrepend.renderItems();
+}
+
+Promise.all([api.getUserFromServer(), api.getInitialCards()])
+  .then(([userInfo, cards]) => {
+    const { name: username, about: occupation, _id, avatar } = userInfo;
+    userData.setUserInfo({ username, occupation, _id, avatar });
+    sectionRenderer(cards);
+    userId = _id;
+    console.log(userId);
+  })
+  .catch((err) => {
+    console.err(err);
+  });
