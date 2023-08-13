@@ -53,15 +53,7 @@ const userData = new UserInfo({
   avatarSelector: ".profile__avatar",
 });
 
-api
-  .getUserFromServer()
-  .then((res) => {
-    userData.setUserInfo(res);
-    userData.setUserAvatar(res);
-  })
-  .catch((err) => {
-    console.error(err);
-  });
+
 
 const profileFormMade = new PopupWithForm(".popup_type_profile", {
   formCallBack: (profileData) => {
@@ -213,8 +205,8 @@ function sectionRenderer(data) {
 Promise.all([api.getUserFromServer(), api.getInitialCards()])
   .then(([userInfo, cards]) => {
     userId = userInfo._id;
-    const { name: username, about: occupation, _id, avatar } = userInfo;
-    userData.setUserInfo({ username, occupation, _id, avatar });
+    userData.setUserInfo(userInfo);
+    userData.setUserAvatar(userInfo)
     sectionRenderer(cards);
   })
   .catch((err) => {
