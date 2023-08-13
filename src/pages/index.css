@@ -12,6 +12,9 @@
 @import url(../blocks/profile/__info-occupation/profile__info-occupation.css);
 @import url(../blocks/profile/__info/profile__info.css);
 @import url(../blocks/profile/profile.css);
+@import url(../blocks/profile/__avatar-area/profile__avatar-area.css);
+@import url(../blocks/profile/__avatar-area-button/profile__avatar-area-button.css);
+@import url(../blocks/popup/__container/_type-avatar/popup__container_type-avatar.css);
 @import url(../blocks/grid-net/__item-box/grid-net__item-box.css);
 @import url(../blocks/grid-net/__item-button/grid-net__item-button.css);
 @import url(../blocks/grid-net/__item-button/_active/grid-net__item-button_active.css);
@@ -47,6 +50,4 @@
 @import url(../blocks/popup/__input/_type/_error/popup__input_type_error.css);
 @import url(../blocks/popup/__input/_type/_active/popup__input_type_active.css);
 @import url(../blocks/popup/__submit/_type-confirm/popup__submit_type-confirm.css);
-@import url(../blocks/profile/__avatar-area/profile__avatar-area.css);
-@import url(../blocks/profile/__avatar-area-button/profile__avatar-area-button.css);
-@import url(../blocks/popup/__container/_type-avatar/popup__container_type-avatar.css);
+
